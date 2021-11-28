@@ -1,0 +1,67 @@
+.weekday-indicator{
+  display: grid;
+  grid-template-columns: repeat(7, minmax(auto, 1fr));
+  grid-template-rows: 1;
+  padding: 15px;
+}
+
+.weekday-indicator-icon {
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.date-indicator {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(auto, 1fr));
+  grid-template-rows: repeat(5, minmax(35px, 1fr));
+  grid-gap: 5px;
+  padding: 0 15px;
+}
+
+.date-icon {
+  display: block;
+  text-align: end;
+  justify-self: center;
+  align-items: flex-start;
+  height: 145px;
+  width: 210px;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid #b5c0cd;
+  border-radius: 5px;
+}
+
+.date-day[data-active-month='false'] {
+  color: rgba(0, 0, 0, 0.3);
+  background-color: #eaeaea;
+  pointer-events: none;
+}
+
+.date-icon .selected {
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.month-indicator {
+  padding: 15px 48px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  margin-top: 10px;
+  font-weight: 600;
+  color: white;
+}
+
+.month-indicator h4 {
+  cursor: pointer;
+}
