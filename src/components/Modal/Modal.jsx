@@ -14,7 +14,6 @@ export default function Modal({ isOpenModal, handleCloseModal, selectedDate, sel
     endTime: "",
     color: ""
   });
-  const [listOfEvent, setListOfEvent] = useState(dateWithEvents);
 
   // filtered event that match with selected date
   const listOfEventWithSpecificDate = selectDateWithEvent.filter((item) => item.date === selectedDate)
@@ -41,8 +40,7 @@ export default function Modal({ isOpenModal, handleCloseModal, selectedDate, sel
         color: colorCode[generateRandomInteger(35)],
       }
 
-      const newAddEvents = [...listOfEvent, newAddEvent];
-      setListOfEvent(newAddEvents);
+      const newAddEvents = dateWithEvents.concat(newAddEvent);
 
       localStorage.setItem('dateWithEvents', JSON.stringify(newAddEvents));
 

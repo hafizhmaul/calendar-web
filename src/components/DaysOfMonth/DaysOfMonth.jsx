@@ -52,7 +52,7 @@ const DaysOfMonth = ({ selectDate, setSelectDate }) => {
   return (
     <div className="date-indicator">
       <Modal isOpenModal={isOpenModal} handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal} selectedDate={moment(selectDate).format("Do MMMM YYYY")} selectDateWithEvent={selectDateWithEvent} />
-      <ReadOnlyModal isOpenReadOnlyModal={isOpenReadOnlyModal} handleCloseReadOnlyModal={handleCloseReadOnlyModal} dateWithEvents={dateWithEvents} readOnlyData={readOnlyData} selectedDate={moment(selectDate).format("Do MMMM YYYY")}/>
+      <ReadOnlyModal isOpenReadOnlyModal={isOpenReadOnlyModal} handleCloseReadOnlyModal={handleCloseReadOnlyModal} dateWithEvents={dateWithEvents} readOnlyData={readOnlyData}/>
       {datesInMonth.map((item, idx) => {
         
         // filtering the event at specific date 
@@ -72,7 +72,7 @@ const DaysOfMonth = ({ selectDate, setSelectDate }) => {
               {getDayOfMonth(item.date)}
 
               {filterSpecificDateEvent.map((day, idx) => (
-                <div key={idx} onClick={(e) => handleClickEvent(e, day)} className={`block text-left text-xs bg-${day.color} z-50 text-white font-semibold py-2 px-1 my-1 rounded-md hover:opacity-80`}>{day.name} : {day.startTime} - {day.endTime}</div>
+                <div key={idx} onClick={(e) => handleClickEvent(e, day)} style={{ background: `${day.color}` }} className="block text-left text-xs z-50 text-white font-semibold py-2 px-1 my-1 rounded-md hover:opacity-80">{day.name} : {day.startTime} - {day.endTime}</div>
               ))}
             </div>
           </div>

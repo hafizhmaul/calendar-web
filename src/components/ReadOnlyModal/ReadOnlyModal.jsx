@@ -36,17 +36,20 @@ export default function ReadOnlyModal({ isOpenReadOnlyModal, handleCloseReadOnly
     handleCloseReadOnlyModal();
   }
 
+
+  // handle delete selected date
   const handleDeleteEvent = (id) => {
     const copyListEvent = [...dateWithEvents];
 
-    const index = dateWithEvents.findIndex((data) => data.id === id);
+    const removeItem = copyListEvent.filter((item) => {
+      return item.id !== id;
+    });
 
-    copyListEvent.splice(index, 1);
-
-    localStorage.setItem('dateWithEvents', JSON.stringify(copyListEvent));
+    localStorage.setItem('dateWithEvents', JSON.stringify(removeItem));
     handleCloseReadOnlyModal();
   }
 
+  // handle when user click button send email
   const handleSendEmailButton = () => {
     handleOpenModalEmail();
     handleCloseReadOnlyModal();
@@ -55,7 +58,7 @@ export default function ReadOnlyModal({ isOpenReadOnlyModal, handleCloseReadOnly
   return (
     <>
       <EditableModal isOpenEditableModal={isOpenEditableModal} editableData={editableData} handleCloseEditableModal={handleCloseEditableModal} selectedDate={selectedDate} />
-      <InputModalEmail openModalEmail={openModalEmail} handleCloseModalEmail={handleCloseModalEmail} dataSelectedDate={readOnlyData}/>
+      <InputModalEmail openModalEmail={openModalEmail} handleCloseModalEmail={handleCloseModalEmail} dataSelectedDate={readOnlyData} />
       <Transition appear show={isOpenReadOnlyModal} as={Fragment}>
         <Dialog
           as="div"
@@ -96,7 +99,7 @@ export default function ReadOnlyModal({ isOpenReadOnlyModal, handleCloseReadOnly
                   as="h3"
                   className="block text-lg text-center font-medium leading-6 text-gray-900"
                 >
-                  <span className="text-green-500 text-base font-bold">Detail Event in {selectedDate}</span>
+                  <span className="text-green-500 text-base font-bold">Detail Event in {readOnlyData.date}</span>
                 </Dialog.Title>
                 <div className="max-w-lg mx-auto">
                   <form>

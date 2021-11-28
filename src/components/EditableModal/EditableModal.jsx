@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
-export default function EditableModal({ isOpenEditableModal, handleCloseEditableModal, editableData, selectedDate }) {
+export default function EditableModal({ isOpenEditableModal, handleCloseEditableModal, editableData }) {
   const dateWithEvents = JSON.parse(localStorage.getItem('dateWithEvents')) || [];
   const [editEventDate, setEditEventDate] = useState({
     name: "",
@@ -18,7 +18,7 @@ export default function EditableModal({ isOpenEditableModal, handleCloseEditable
     })
   }
 
-  const handleEditEventSubmit = (event) => {
+  const handleEditEventSubmit = () => {
     const editedEvent = {
       id: editableData.id,
       date: editableData.date,
@@ -81,7 +81,7 @@ export default function EditableModal({ isOpenEditableModal, handleCloseEditable
                   as="h3"
                   className="block text-lg text-center font-medium leading-6 text-gray-900"
                 >
-                  <span className="text-pink-500 font-bold">Edit Event in {selectedDate}</span>
+                  <span className="text-pink-500 font-bold">Edit Event in {editableData.date}</span>
                 </Dialog.Title>
                 <div className="max-w-lg mx-auto">
                   <form onSubmit={(e) => handleEditEventSubmit(e)}>
